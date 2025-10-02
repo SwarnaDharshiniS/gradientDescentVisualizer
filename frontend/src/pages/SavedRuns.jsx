@@ -13,7 +13,7 @@ export default function SavedRuns() {
   async function fetchList() {
     setLoading(true);
     try {
-      const resp = await axios.get('http://localhost:5000/api/experiments');
+      const resp = await axios.get('/api/experiments');
       setList(resp.data.experiments || []);
     } catch (err) {
       console.error(err);
@@ -25,7 +25,7 @@ export default function SavedRuns() {
 
   async function loadExperiment(id) {
     try {
-      const resp = await axios.get(`http://localhost:5000/api/experiments/${id}`);
+      const resp = await axios.get(`/api/experiments/${id}`);
       setSelected(resp.data.experiment);
     } catch (err) {
       console.error(err);
