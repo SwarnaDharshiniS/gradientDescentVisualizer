@@ -5,7 +5,8 @@ export default function SavedRuns() {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState(null);
-
+  const API_BASE = process.env.REACT_APP_API_URL || "";
+  
   useEffect(() => {
     fetchList();
   }, []);
@@ -13,7 +14,8 @@ export default function SavedRuns() {
   async function fetchList() {
     setLoading(true);
     try {
-      const resp = await axios.get('/api/experiments');
+      const resp = await axios.get(`${API_BASE}/api/experiments`);
+      // const resp = await axios.get('/api/experiments');
       setList(resp.data.experiments || []);
     } catch (err) {
       console.error(err);
@@ -25,7 +27,7 @@ export default function SavedRuns() {
 
   async function loadExperiment(id) {
     try {
-      const resp = await axios.get(`/api/experiments/${id}`);
+      const resp = await axios.get(`${API_BASE}/api/experiments/${id}`);
       setSelected(resp.data.experiment);
     } catch (err) {
       console.error(err);
