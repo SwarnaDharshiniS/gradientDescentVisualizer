@@ -6,8 +6,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const gradientRouter = require("./backend/routes/gradient");
-const experimentsRouter = require("./backend/routes/experiments");
+const gradientRouter = require("./routes/gradient");
+const experimentsRouter = require("./routes/experiments");
 
 const app = express();
 
