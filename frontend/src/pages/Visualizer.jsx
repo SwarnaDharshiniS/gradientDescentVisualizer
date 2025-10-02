@@ -47,7 +47,7 @@ export default function Visualizer() {
   async function runExperiment(options) {
     setLoading(true);
     try {
-      const resp = await axios.post('${API_BASE}/api/gradient-descent', options);
+      const resp = await axios.post(`${API_BASE}/api/gradient-descent`, options);
       setTrace(resp.data.trace || []);
       setDataset(resp.data.dataset || []);
       setFinalParams(resp.data.final || null);
