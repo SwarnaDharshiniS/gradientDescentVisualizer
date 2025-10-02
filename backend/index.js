@@ -30,6 +30,9 @@ if (process.env.MONGO_URI) {
 // routes
 app.use("/api/gradient-descent", gradientRouter);
 app.use("/api/experiments", experimentsRouter);
+app.get("/", (req, res) => {
+  res.send("✅ Backend running on Vercel");
+});
 
 // Export Express app as a handler for Vercel
 module.exports = (req, res) => {
