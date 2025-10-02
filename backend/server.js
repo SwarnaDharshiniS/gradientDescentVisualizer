@@ -22,5 +22,4 @@ if (process.env.MONGO_URI) {
 app.use('/api/gradient-descent', gradientRouter);
 app.use('/api/experiments', experimentsRouter);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, ()=> console.log(`Backend running on port ${PORT}`));
+module.exports = app;
