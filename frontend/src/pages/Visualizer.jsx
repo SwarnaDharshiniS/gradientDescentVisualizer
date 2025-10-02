@@ -24,7 +24,8 @@ export default function Visualizer() {
   const [frame, setFrame] = useState(0);
   const [playing, setPlaying] = useState(false);
   const intervalRef = useRef(null);
-
+  const API_BASE = process.env.REACT_APP_API_URL || "";
+  
   useEffect(() => {
     if (playing && trace.length) {
       intervalRef.current = setInterval(() => {
@@ -46,7 +47,7 @@ export default function Visualizer() {
   async function runExperiment(options) {
     setLoading(true);
     try {
-      const resp = await axios.post('/api/gradient-descent', options);
+      const resp = await axios.post('${API_BASE}/api/gradient-descent', options);
       setTrace(resp.data.trace || []);
       setDataset(resp.data.dataset || []);
       setFinalParams(resp.data.final || null);
